@@ -21,10 +21,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="home-info padd-15">
-                            <h3 class="hello">Hello <span class="name">Little children</span>, to our platform</h3>
+                            <h3 class="hello">Hello <span class="name">Young students</span>, and welcome to our platform</h3>
                             <p>
-                                On this platform you can learn what you want academically, or develop yourself.
-                                Be ready for an adventure on the ocean of learning.
+                                In this platform you can find what you need academically, or to develop yourself.
+                                Be ready for an adventure in the ocean of knowledge.
                             </p>
                             <a href="{{ route('levels.index') }}" class="btn enroll">Enroll</a>
 
