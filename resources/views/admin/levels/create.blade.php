@@ -32,18 +32,32 @@
                     <form action="{{ route('admin.levels.store') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-12">
-                                <label for="nom">Level Name</label>
-                                <input type="text" name="nom" id="nom" class="form-control" value="{{ old('nom') }}" required>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="description">Description</label>
-                                <textarea name="description" id="description" class="form-control" rows="5">{{ old('description') }}</textarea>
-                            </div>
-
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary mt-3">Create Level</button>
+                            <div class="contact-form padd-15">
+                                <div class="row">
+                                    <div class="form-item col-6">
+                                        <div class="form-group">
+                                            <input type="text" name="nom" placeholder="Level Name" id="nom" class="form-control" value="{{ old('nom') }}" required>
+                                            @error('nom')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-item col-6">
+                                        <div class="form-group">
+                                            <textarea name="description" id="description" class="form-control" rows="5">{{ old('description') }}</textarea>
+                                            @error('description')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-item col-12 padd-15">
+                                        <button type="submit" class="btn btn-primary mt-3">Create Level</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>

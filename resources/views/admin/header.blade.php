@@ -1,52 +1,24 @@
 <header class="header">    
     <div class="top-bar">
-        <form class="search-form">
-            <input type="text" class="search-input" placeholder="Search...">
+        <form class="search-form" onsubmit="handleSearch(event)">
+            <input type="text" name="query" class="search-input" placeholder="Search...">
             <button type="submit" class="search-btn" aria-label="Search">
                 <i class="fa fa-search"></i>
-            </button>
-        </form>
-        <a href="#" class="register-btn" id="open-register-modal">Register</a>
-        <a href="#" class="login-btn" id="open-login-modal">Login</a>
-        
-    </div>
-
-    <!-- Login Modal -->
-    <div class="login-modal" id="login-modal">
-        <div class="login-modal-content">
-            <span class="close-modal" id="close-login-modal">&times;</span>
-            <h2>Login</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" id="username"  name="username" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password"  id="password" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn">Login</button>
-            </form>
-            <a href="#" class="forgot-password">Forgot my password?</a>
+            </button> 
+        </form>   
+    
+        {{-- Profile with modal trigger --}}
+        <div class="profile">
+            <img src="{{ asset('images/Profile-PNG-Photo.png') }}" alt="Profile Picture" class="profile-pic" onclick="toggleProfilePopup()">
+            
+            <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                <a href="#" onclick="openProfileModal()">Profile</a>
+                <a href="#" onclick="openSettingsModal()">Settings</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
         </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div class="login-modal" id="register-modal">
-        <div class="login-modal-content">
-            <span class="close-modal" id="close-register-modal">&times;</span>
-            <h2>Register</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn">confirm</button>
-            </form>
-        </div>
-    </div>
-    <!-- End of Register Modal -->
+    </div>  
 </header>

@@ -25,7 +25,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title padd-15">
-                            <h2>Levels</h2>
+                            <h2>All Levels</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -47,7 +47,7 @@
                                                 <a href="{{ route('admin.levels.edit', $level->id) }}" class="action-icon">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('admin.levels.delete', $level->id) }}" method="POST" style="display:inline;">
+                                                <form action="{{ route('admin.levels.destroy', $level->id) }}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="action-icon delete-icon" onclick="return confirm('Are you sure you want to delete this level?')">

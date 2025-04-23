@@ -33,9 +33,9 @@
                                 <div class="level-item padd-15">
                                     <a href="{{ route('subjects.show', $subject->id) }}" class="level-link">
                                         <div class="level-item-inner" >
-                                            <img src="{{ asset('image/' . ($subject->cover ?? 'default.png')) }}" 
+                                            <img src="{{ asset('storage/' . $subject->cover) }}" 
                                                  alt="{{ $subject->nom }}" 
-                                                 style="width: 100%; height: auto; border-radius: 6px; margin-bottom: 10px;">
+                                                 style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
                                             <h4>{{ $subject->nom }}</h4>
                                             <p>{{ $subject->description }}</p>
                                         </div>

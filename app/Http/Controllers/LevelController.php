@@ -6,8 +6,15 @@ use App\Models\Level;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+    
+
+
 class LevelController extends Controller
-{
+{   // Temporarily commented out until admin role is implemented
+    // public function __construct()
+    // {
+    //     $this->middleware('admin'); // Protect all admin routes with the admin middleware
+    // }
     // Show levels on the public site
     public function index()
     {
@@ -31,7 +38,9 @@ class LevelController extends Controller
             abort(404); // Return a 404 error if the level is not found
         }
 
-        return view('levels.show', compact('level')); // Display the level details
+        $subjects = $level->subjects; // Assuming Level has a `subjects()` relationship
+
+        return view('levels.show', compact('level', 'subjects')); // Pass level and subjects to the view
     }
 
 
