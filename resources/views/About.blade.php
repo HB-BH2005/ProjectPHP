@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="about-text">
                                     <h3>We are Double HI, <span>1st year students at ESI</span></h3>
-                                    <p>We are a group of four students from ESI, passionate about education and technology. We believe that learning should be fun and accessible to everyone — that’s why we created this platform. <span class="bold">Learning</span> is an educational platform launched in April 2025 by <span class="bold">Double HI</span>, a name derived from the initials of its creators: Hadil Barzani, Hamza Ahddad, Ijlal Sellak, and Idriss Jabri. This platform is currently designed for children aged 4 to 12, helping them study various subjects and languages, prepare for the future, and better understand topics they may find challenging.
+                                    <p>We are a group of four students from ESI, passionate about education and technology. We believe that learning should be fun and accessible to everyone — that’s why we created this platform. <span class="bold">Learning</span> is an educational platform launched in April 2025 by <span class="bold">Double HI</span>, a name derived from the initials of its creators: Hadil Barzani, Hamza Ahaddad, Ijlal Sellak, and Idriss Jabri. This platform is currently designed for children aged 4 to 12, helping them study various subjects and languages, prepare for the future, and better understand topics they may find challenging.
                                     </p>
                                 </div>
                             </div>
@@ -46,6 +46,5 @@
         @include("footer") 
     </div>
     <script src="{{ asset('js/scripts.js') }}"></script>
-
 </body>
 </html>
