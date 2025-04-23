@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subjects</title>
+    <title>Levels</title>
     <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title padd-15">
-                            <h2>Subjects</h2>
+                            <h2>Levels</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -33,43 +33,48 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Level</th>
                                     <th>Description</th>
-                                    <th>Cover</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (isset($subjects) && $subjects->count() > 0)
-                                    @foreach ($subjects as $subject)
+                                @if ($levels->count() > 0)
+                                    @foreach ($levels as $level)
                                         <tr>
-                                            <td>{{ $subject->nom }}</td>
-                                            <td>{{ $subject->level->nom }}</td>
-                                            <td>{{ $subject->description }}</td>
-                                            <td>{{ $subject->cover }}</td>
+                                            <td>{{ $level->nom }}</td>
+                                            <td>{{ $level->description }}</td>
                                             <td>
-                                                <a href="{{ route('admin.subjects.edit', $subject->id) }}" class="action-icon"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ route('admin.subjects.delete', $subject->id) }}" class="action-icon delete-icon" onclick="return confirm('Are you sure you want to delete this subject?')"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="{{ route('admin.levels.edit', $level->id) }}" class="action-icon">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <form action="{{ route('admin.levels.delete', $level->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="action-icon delete-icon" onclick="return confirm('Are you sure you want to delete this level?')">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="5">No subjects found.</td>
+                                        <td colspan="3">No levels found.</td>
                                     </tr>
                                 @endif
                             </tbody>
                         </table>
                         <div class="add-level">
-                            <a href="{{ route('admin.subjects.create') }}" class="btn">Add New Subject</a>
+                            <a href="{{ route('admin.levels.create') }}" class="btn">Add New Level</a>
                         </div>
                     </div>
-
-                    @include('admin.footer')
                 </div>
             </section>
+
+            @include('admin.footer')
         </div>
     </div>
+    
     <script src="{{ asset('js/scripts.js') }}?v=1.0"></script>
 </body>
 

@@ -43,7 +43,7 @@
             </section>
             <!--=====About Section END=====-->
         </div>
-        @include("footer")  -->
+        @include("footer") 
     </div>
     <script src="{{ asset('js/scripts.js') }}"></script>
 

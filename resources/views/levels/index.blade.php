@@ -27,24 +27,26 @@
                     </div>
 
                     <div class="row">
-                        @foreach ($levels as $level)
-                            <div class="level-item padd-15">
-                                <a href="{{ route('levels.show', $level->slug) }}" class="level-link">
-                                    <div class="level-item-inner" style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; transition: box-shadow 0.3s;">
-                                        <div class="icon">
-                                            <i class="fas fa-folder-open"></i>
+                        @if ($levels->isNotEmpty())
+                            @foreach ($levels as $level)
+                                <div class="level-item padd-15">
+                                    <a href="{{ route('levels.show', $level->slug) }}" class="level-link">
+                                        <div class="level-item-inner" style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; transition: box-shadow 0.3s;">
+                                            <div class="icon">
+                                                <i class="fas fa-folder-open"></i>
+                                            </div>
+                                            <h4>{{ $level->nom }}</h4>
+                                            <p>{{ $level->description ?? 'No description available.' }}</p>
                                         </div>
-                                        <h4>{{ $level->nom }}</h4>
-                                        <p>{{ $level->description ?? 'No description available.' }}</p>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="padd-15">
+                                <p>No levels available yet. Please check back later.</p>
                             </div>
-                        @endforeach
+                        @endif
                     </div>
-
-                    @if ($levels->isEmpty())
-                        <p class="padd-15">No levels available yet.</p>
-                    @endif
                 </div>
             </section>
 
