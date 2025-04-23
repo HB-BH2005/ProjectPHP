@@ -1,7 +1,7 @@
 :root{
-    --bg-black-900:#f2f2fc;/*ce sont des variables qui on stock des paramètres */
-    --bg-black-100:#fdf9ff;
-    --bg-black-50:#e8dfec;
+    --bg-black-900:#fffdcf;/*ce sont des variables qui on stock des paramètres */
+    --bg-black-100:#ffffff;
+    --bg-black-50:#ffffff;
     --text-black-900:#302e4d;
     --text-black-700:#504e70
 
@@ -34,6 +34,10 @@ ul{
     opacity: 1;
 }
 
+.about-paragraph {
+    background-color: #ffffff;
+    color: var(--text-black-700);
+}
 
 .main-content{
     padding-left: 270px;
@@ -263,7 +267,7 @@ footer p {
 
 /* Top bar container */
 .top-bar {
-    background: linear-gradient(to left, #1a1a1d, #2e15e9);
+    background: linear-gradient(to left, #9d9da6, #2e15e9);
     display: flex;
     justify-content: space-between;
     align-items: center;
