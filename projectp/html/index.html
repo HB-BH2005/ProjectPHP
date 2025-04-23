@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio HB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=1.0">
+    <link rel="stylesheet" href="../css/skins/color-1.css?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <!--===Main container start===-->
+    <div class="main-conatianer">
+        <!--===Aside start===-->
+        <div class="aside">
+            <div class="logo">
+                <a href="index.html"><span>L</span>earning</a>
+            </div>
+            <div class="nav-toggler">
+                <span></span>
+            </div>
+            
+            <ul class="nav">
+                <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="About.html"><i class="fa fa-user"></i> About</a></li>
+                <li><a href="levels.html"><i class="fa fa-list"></i> Levels</a></li>
+                <li><a href="My_courses.html"><i class="fa fa-briefcase"></i> My Courses</a></li>
+                <li><a href="Contact.html"><i class="fa fa-comments"></i> Contact</a></li>
+
+            </ul> 
+            
+        </div>
+        <!--===Aside END===-->
+        <!--===Main content start===-->
+        <div class="main-content">
+            
+            <div class="top-bar">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button type="submit" class="search-btn" aria-label="Search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <a href="#" class="register-btn" id="open-register-modal">Register</a>
+                <a href="#" class="login-btn" id="open-login-modal">Login</a>
+                
+            </div>
+
+            <!-- Login Modal -->
+            <div class="login-modal" id="login-modal">
+                <div class="login-modal-content">
+                    <span class="close-modal" id="close-login-modal">&times;</span>
+                    <h2>Login</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="username"  name="username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password"  id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    <a href="#" class="forgot-password">Forgot my password?</a>
+                </div>
+            </div>
+
+            <!-- Register Modal -->
+            <div class="login-modal" id="register-modal">
+                <div class="login-modal-content">
+                    <span class="close-modal" id="close-register-modal">&times;</span>
+                    <h2>Register</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+           
+            <!--=== Home Section start ===-->
+            <section class="home section">
+                <div class="container">
+                   
+                    <div class="row">
+                        <div class="home-info padd-15">
+                            <h3 class="hello">Hello <span class="name">Little children</span>, to our platform</h3>
+                            <p>
+                                On this platform you can learn what you want academically, or develop yourself.
+                                Be ready for an adventure on the ocean of learning.
+                            </p>
+                        <div class="centered">
+                            <a href="levels.html" class="btn enroll">Enroll</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--=== Home Section END===-->
+            <!--=== Footer Section ===-->
+            <footer >
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-info padd-15">
+                            <p>&copy; 2023 Learning Platform. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--=== Footer Section END ===-->
+
+        <!--===Main content END===-->
+    </div>
+
+    <!--===Main container END===-->
+    <!--===Js Files===-->
+    <script src="../js/scripts.js?v=1.0"></script>
+</body>
+</html>

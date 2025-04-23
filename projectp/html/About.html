@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT US</title>
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="C:\xampp\htdocs\TP\projectp\css\style.css?v=1.0">
+    <link rel="stylesheet" href="C:\xampp\htdocs\TP\projectp\css\skins\color-1.css?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <!--===Main container start===-->
+    <div class="main-container">
+        <!--===Aside start===-->
+        <div class="aside">
+            <div class="logo">
+                <a href="index.html"><span>L</span>earning</a>
+            </div>
+            <div class="nav-toggler">
+                <span></span>
+                
+            </div>
+            <ul class="nav">
+                <li><a href="index.html" ><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="About.html"><i class="fa fa-user"></i> About</a></li>
+                <li><a href="levels.html"><i class="fa fa-list"></i> levels</a></li>
+                <li><a href="My_courses.html"><i class="fa fa-briefcase"></i> My Courses</a></li>
+                <li><a href="Contact.html"><i class="fa fa-comments"></i> Contact</a></li>
+            </ul> 
+        </div>
+        <!--===Aside END===-->
+        <!--===Main content start===-->
+        <div class="main-content">
+            <div class="top-bar">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <button type="submit" class="search-btn" aria-label="Search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <a href="#" class="register-btn" id="open-register-modal">Register</a>
+                <a href="#" class="login-btn" id="open-login-modal">Login</a>
+                
+            </div>
+
+            <!-- Login Modal -->
+            <div class="login-modal" id="login-modal">
+                <div class="login-modal-content">
+                    <span class="close-modal" id="close-login-modal">&times;</span>
+                    <h2>Login</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="username"  name="username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password"  id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    <a href="#" class="forgot-password">Forgot my password?</a>
+                </div>
+            </div>
+
+            <!-- Register Modal -->
+            <div class="login-modal" id="register-modal">
+                <div class="login-modal-content">
+                    <span class="close-modal" id="close-register-modal">&times;</span>
+                    <h2>Register</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+            <!--=====About Section Start=====-->
+            <section class="about section">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>About Us </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="about-content padd-15">
+                            <div class="row">
+                                <div class="about-text">
+                                    <h3>We are Double HI, <span>1st year students at ESI</span></h3>
+                                    <p>We are a group of four students from ESI, passionate about education and technology. We believe that learning should be fun and accessible to everyone — that’s why we created this platform. <span class="bold">Learning</span> is an educational platform launched in April 2025 by <span class="bold">Double HI</span>, a name derived from the initials of its creators: Hadil Barzani, Hamza Ahddad, Ijlal Sellak, and Idriss Jabri. This platform is currently designed for children aged 4 to 12, helping them study various subjects and languages, prepare for the future, and better understand topics they may find challenging.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--=====About Section END=====-->
+        </div>
+        <!--=== Footer Section ===-->
+        <footer >
+            <div class="container">
+                <div class="row">
+                    <div class="footer-info padd-15">
+                        <p>&copy; 2023 Learning Platform. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--=== Footer Section END ===-->
+        <!--===Main content END===-->
+    </div>
+     <!--===Js Files===-->
+     <script src="../js/scripts.js"></script>
+</body>
+</html>
