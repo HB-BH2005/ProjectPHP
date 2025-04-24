@@ -1,5 +1,5 @@
 :root {
-    --bg-black-900: #f2f2fc; /* Background variables */
+    --bg-black-900: #fff4c8; /* Background variables */
     --bg-black-100: #fdf9ff;
     --bg-black-50: #e8dfec;
     --text-black-900: #302e4d;
@@ -12,7 +12,7 @@ body {
     font-size: 18px; /* Slightly larger font size */
     font-family: 'Roboto', sans-serif; /* Modern and readable font */
     color: var(--text-black-900); /* Main text color */
-    background-color: var(--bg-black-100); /* Light background for better contrast */
+    background-color: var(--bg-black-900); /* Light background for better contrast */
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif; /* Elegant font for headings */
@@ -46,7 +46,7 @@ ul{
     
 }
 .section {
-    background: var(--bg-black-100);
+    background: var(--bg-black-900);
     padding: 50px 30px; /* Plus d'espace pour respirer */
     border-radius: 10px; /* Coins arrondis */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
@@ -282,7 +282,7 @@ a:hover {
 footer {
     text-align: center;
     margin-bottom: 0%;
-    background: linear-gradient(to left, #1a1a1b, #2e15e9);;
+    background: linear-gradient(to left, #a0a0a6, #2e15e9);;
 }
 
 footer .footer-info {
@@ -299,7 +299,7 @@ footer p {
 
 /* Top bar container */
 .top-bar {
-    background: linear-gradient(to left, #1a1a1d, #2e15e9);
+    background: linear-gradient(to left, #a0a0a6, #2e15e9);
     display: flex;
     justify-content: space-between;
     align-items: center;
