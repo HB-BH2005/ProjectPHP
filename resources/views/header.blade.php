@@ -7,12 +7,12 @@
             </button>
         </form>
         <a href="#" class="register-btn" id="open-register-modal">Register</a>
-        <a href="#" class="login-btn" id="open-login-modal">Login</a>
+        <a href="{{ route('login') }}" class="login-btn">Login</a>
         
     </div>
 
     <!-- Login Modal -->
-    <div class="login-modal" id="login-modal">
+    <div class="login-modal" id="login-modal" style="display:none;">
         <div class="login-modal-content">
             <span class="close-modal" id="close-login-modal">&times;</span>
             <h2>Login</h2>
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Register Modal -->
-    <div class="login-modal" id="register-modal">
+    <div class="login-modal" id="register-modal" style="display:none;">
         <div class="login-modal-content">
             <span class="close-modal" id="close-register-modal">&times;</span>
             <h2>Register</h2>

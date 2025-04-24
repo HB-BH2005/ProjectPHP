@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\Auth\LoginController;
 
 //
 // Public Routes
@@ -11,6 +12,9 @@ use App\Http\Controllers\SubjectController;
 Route::get('/home', fn() => view('Home'))->name('home');
 Route::get('/contact', fn() => view('Contact'))->name('contact');
 Route::get('/about', fn() => view('About'))->name('about');
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
 // Levels and Subjects (Public)
 Route::get('/levels', [LevelController::class, 'index'])->name('levels.index');
@@ -52,5 +56,5 @@ Route::prefix('admin/subjects')->group(function () {
     Route::delete('/{id}', [SubjectController::class, 'destroy'])->name('admin.subjects.destroy');
 });
 
-// Logout
-Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+//// Logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

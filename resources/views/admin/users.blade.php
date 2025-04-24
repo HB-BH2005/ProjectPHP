@@ -38,7 +38,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>progress</th>
+                                    <th>score</th>
                                     <th>role</th>
                                     <th>Action</th>
 
@@ -50,7 +50,7 @@
                                         <tr>
                                             <td><?php echo htmlspecialchars($user->name); ?></td>
                                             <td><?php echo htmlspecialchars($user->email); ?></td>
-                                            <td><?php echo htmlspecialchars($user->progress); ?></td>
+                                            <td><?php echo htmlspecialchars($user->score); ?></td>
                                             <td><?php echo htmlspecialchars($user->role); ?></td>
                                             <td>
                                                 <a href="edit_user.php?id=<?php echo $user->id; ?>" class="action-icon">
