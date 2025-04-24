@@ -6,8 +6,6 @@
                 <i class="fa fa-search"></i>
             </button> 
         </form>   
-    
-        {{-- Profile with modal trigger --}}
         <div class="profile">
             <img src="{{ asset('images/Profile-PNG-Photo.png') }}" alt="Profile Picture" class="profile-pic" onclick="toggleProfilePopup()">
             
