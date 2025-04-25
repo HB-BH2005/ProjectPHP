@@ -50,6 +50,7 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with('success', 'User added successfully.');
     }
 }
+<<<<<<< HEAD
 =======
 
 class UserController extends Controller
@@ -70,3 +71,6 @@ class UserController extends Controller
 }
 ?>
 >>>>>>> 8a71cd4 (Added courses functionality and updated styles)
+=======
+?>
+>>>>>>> 1518b61 (courses fixed)

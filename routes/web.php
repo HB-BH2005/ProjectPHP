@@ -63,9 +63,14 @@ Route::prefix('admin/subjects')->group(function () {
 //// Logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/admin/courses', [CourseController::class, 'index'])->name('admin.courses.index');
+
 Route::prefix('admin/courses')->group(function () {
-Route::get('/create', [CourseController::class, 'create'])->name('admin.courses.create');
-Route::post('/', [CourseController::class, 'store'])->name('admin.courses.store');
+    Route::get('/create', [CourseController::class, 'create'])->name('admin.courses.create');
+    Route::post('/', [CourseController::class, 'store'])->name('admin.courses.store');
+    Route::get('/{id}/edit', [CourseController::class, 'edit'])->name('admin.courses.edit');
+    Route::put('/{id}', [CourseController::class, 'update'])->name('admin.courses.update');
+    Route::delete('/{id}', [CourseController::class, 'destroy'])->name('admin.courses.delete');
 });
 
 Route::prefix('admin/users')->group(function () {
