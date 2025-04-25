@@ -43,7 +43,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>score</th>
+                                    {{-- <th>score</th> --}}
                                     <th>role</th>
                                     <th>Action</th>
 
@@ -55,7 +55,7 @@
                                         <tr>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->score ?? '-' }}</td>
+                                            {{-- <td>{{ $user->score ?? '-' }}</td> --}}
                                             <td>{{ $user->role }}</td>
                                             <td>
                                                 <a href="{{ url('admin/users/' . $user->id . '/edit') }}" class="action-icon">
@@ -81,7 +81,7 @@
                         </table>
                     </div>
 <div class="add-user">
-    <a href="{{ route('admin.add_user') }}" class="btn">Add New user</a>
+    <a href="{{ route('admin.users.create') }}" class="btn">Add New user</a>
 </div>
                 </div>
                 @include("admin.footer")
