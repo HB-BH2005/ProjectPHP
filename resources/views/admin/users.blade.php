@@ -81,7 +81,7 @@
                         </table>
                     </div>
 <div class="add-user">
-    <a href="{{ route('admin.users.create') }}" class="btn">Add New user</a>
+    <a href="{{ route('admin.add_user') }}" class="btn">Add New user</a>
 </div>
                 </div>
                 @include("admin.footer")
