@@ -64,6 +64,12 @@ Route::prefix('admin/subjects')->group(function () {
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::prefix('admin/courses')->group(function () {
-    Route::get('/create', [CourseController::class, 'create'])->name('admin.courses.create');
-    Route::post('/', [CourseController::class, 'store'])->name('admin.courses.store');
+Route::get('/create', [CourseController::class, 'create'])->name('admin.courses.create');
+Route::post('/', [CourseController::class, 'store'])->name('admin.courses.store');
+});
+
+Route::prefix('admin/users')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('admin.users'); // Define the 'admin.users' route
+    Route::get('/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::post('/', [UserController::class, 'store'])->name('admin.users.store');
 });

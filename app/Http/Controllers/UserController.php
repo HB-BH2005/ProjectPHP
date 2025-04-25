@@ -1,9 +1,14 @@
 <?php
+<<<<<<< HEAD
 
+=======
+<?php
+>>>>>>> 8a71cd4 (Added courses functionality and updated styles)
 namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,3 +50,23 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with('success', 'User added successfully.');
     }
 }
+=======
+
+class UserController extends Controller
+{
+    public function index(Request $request)
+    {
+        $query = $request->query('query'); // Handle search queries
+        if ($query) {
+            $users = User::where('name', 'LIKE', "%$query%")
+                ->orWhere('email', 'LIKE', "%$query%")
+                ->get();
+        } else {
+            $users = User::all(); // Fetch all users if no query is provided
+        }
+
+        return view('admin.users', compact('users'));
+    }
+}
+?>
+>>>>>>> 8a71cd4 (Added courses functionality and updated styles)

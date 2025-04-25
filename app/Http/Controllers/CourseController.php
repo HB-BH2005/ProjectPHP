@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Course; // Import the Course model
 use App\Models\Level;
 use Illuminate\Http\Request;
 
@@ -34,5 +35,18 @@ class CourseController extends Controller
 
         return redirect()->route('admin.courses.index')->with('success', 'Course created successfully.');
     }
+
+    public function index(Request $request)
+    {
+        $query = $request->query('query'); // Handle search queries
+        if ($query) {
+            $courses = Course::where('name', 'LIKE', "%$query%")
+                ->orWhere('description', 'LIKE', "%$query%")
+                ->get();
+        } else {
+            $courses = Course::all(); // Fetch all courses if no query is provided
+        }
+
+        return view('admin.courses.index', compact('courses'));
+    }
 }
-?>
