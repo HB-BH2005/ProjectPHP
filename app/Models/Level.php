@@ -48,4 +48,8 @@ class Level extends Model
             }
         });
     }
+    public function getCoverUrlAttribute()
+{
+    return $this->cover ? asset('storage/' . $this->cover) : null;
+}   
 }

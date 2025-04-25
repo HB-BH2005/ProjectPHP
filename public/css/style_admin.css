@@ -15,6 +15,64 @@ th, td {
     text-align: left;
 }
 
+
 th {
     background-color: var(--bg-black-50);
+}
+/* General form styling */
+/* Form Styling */
+form {
+    margin-top: 20px;
+}
+
+form .form-control, form .form-select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+form .form-control:focus, form .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Card Styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
 }

@@ -1,18 +1,38 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\Level;
 use Illuminate\Http\Request;
-use App\Models\Course;
 
 class CourseController extends Controller
 {
-    public function index()
+    public function create()
     {
-        // Get all courses with their related level and subject
-        $courses = Course::with(['level', 'subject'])->get();
+        $levels = Level::all(); // Fetch all levels for the dropdown
+        return view('courses.create', compact('levels'));
+    }
 
-        // Return the view and pass the data
-        return view('users.my-courses', compact('courses'));
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'level_id' => 'required|exists:levels,id',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $course = new Course();
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->level_id = $request->level_id;
+
+        if ($request->hasFile('cover')) {
+            $course->cover = $request->file('cover')->store('covers', 'public');
+        }
+
+        $course->save();
+
+        return redirect()->route('admin.courses.index')->with('success', 'Course created successfully.');
     }
 }
+?>

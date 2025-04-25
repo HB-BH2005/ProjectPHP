@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,22 +8,12 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'level_id',
-        'subject_id',
-        'nom',
-        'content',
-    ];
+    protected $fillable = ['name', 'description', 'level_id', 'cover'];
 
-    // A course belongs to a level
+    // A Course belongs to a Level
     public function level()
     {
         return $this->belongsTo(Level::class);
     }
-
-    // A course belongs to a subject
-    public function subject()
-    {
-        return $this->belongsTo(Subject::class);
-    }
 }
+?>

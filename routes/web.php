@@ -58,3 +58,8 @@ Route::prefix('admin/subjects')->group(function () {
 
 //// Logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::prefix('admin/courses')->group(function () {
+    Route::get('/create', [CourseController::class, 'create'])->name('admin.courses.create');
+    Route::post('/', [CourseController::class, 'store'])->name('admin.courses.store');
+});
