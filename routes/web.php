@@ -35,7 +35,11 @@ Route::get('/admin', fn() => view('admin.home'))->name('admin');
 
 // Admin: Other Static Pages
 Route::get('/admin/courses', fn() => view('admin.courses'))->name('admin.courses');
-Route::get('/admin/users', fn() => view('admin.users'))->name('admin.users');
+use App\Http\Controllers\UserController;
+
+Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
 Route::get('/admin/messages', fn() => view('admin.messages'))->name('admin.messages');
 
 // Admin: Levels Management

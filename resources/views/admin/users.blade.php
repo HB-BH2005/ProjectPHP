@@ -28,9 +28,14 @@
             <section class="users section">
                 <div class="container">
                     <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Users</h2>
+                    <div class="section-title padd-15">
+                        <h2>Users</h2>
+                    </div>
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
                         </div>
+                    @endif
                     </div>
                     <div class="row">
                         <table>
@@ -45,35 +50,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (isset($users) && is_array($users) && count($users) > 0): ?>
-                                    <?php foreach ($users as $user): ?>
+                                @if($users->count() > 0)
+                                    @foreach($users as $user)
                                         <tr>
-                                            <td><?php echo htmlspecialchars($user->name); ?></td>
-                                            <td><?php echo htmlspecialchars($user->email); ?></td>
-                                            <td><?php echo htmlspecialchars($user->score); ?></td>
-                                            <td><?php echo htmlspecialchars($user->role); ?></td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->score ?? '-' }}</td>
+                                            <td>{{ $user->role }}</td>
                                             <td>
-                                                <a href="edit_user.php?id=<?php echo $user->id; ?>" class="action-icon">
+                                                <a href="{{ url('admin/users/' . $user->id . '/edit') }}" class="action-icon">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="delete_user.php?id=<?php echo $user->id; ?>" class="action-icon delete-icon" onclick="return confirm('Are you sure you want to delete this user?')">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
+                                                <form action="{{ url('admin/users/' . $user->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="action-icon delete-icon" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
+                                    @endforeach
+                                @else
                                     <tr>
                                         <td colspan="5">No users found.</td>
                                     </tr>
-                                <?php endif; ?>
+                                @endif
 
                             </tbody>
                         </table>
                     </div>
-                    <div class="add-user">
-                        <a href="add_user.php" class="btn">Add New user</a>
-                    </div>
+<div class="add-user">
+    <a href="{{ route('admin.users.create') }}" class="btn">Add New user</a>
+</div>
                 </div>
                 @include("admin.footer")
         </div>

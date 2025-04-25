@@ -13,7 +13,7 @@ class SubjectSeeder extends Seeder
         $subjects = [
             
             [
-                'nom' => 'Français Level 1',
+                'nom' => 'French Level 1',
                 'description' => 'In this course, kids will learn the basics of French. They will start with the alphabet, how to pronounce and write the letters, and learn simple words. It’s a fun way to start speaking and writing in French!',
                 'level_id' => 1,
                 'cover' => 'subjects/z2nDfkL7eJC1O7R2WXiJGWbpsvICKN7aqc2SMBGc.jpg', 
