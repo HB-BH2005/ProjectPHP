@@ -45,4 +45,3 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with('success', 'User added successfully.');
     }
 }
-?>

@@ -6,48 +6,27 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-        <a href="#" class="register-btn" id="open-register-modal">Register</a>
-        <a href="{{ route('login') }}" class="login-btn">Login</a>
-        
-    </div>
+<a href="{{ route('register') }}" class="register-btn">Register</a>
+<a href="{{ route('login') }}" class="login-btn">Login</a>
 
-    <!-- Login Modal -->
-    <div class="login-modal" id="login-modal" style="display:none;">
-        <div class="login-modal-content">
-            <span class="close-modal" id="close-login-modal">&times;</span>
-            <h2>Login</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" id="username"  name="username" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password"  id="password" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn">Login</button>
-            </form>
-            <a href="#" class="forgot-password">Forgot my password?</a>
-        </div>
-    </div>
+</div>
 
-    <!-- Register Modal -->
-    <div class="login-modal" id="register-modal" style="display:none;">
-        <div class="login-modal-content">
-            <span class="close-modal" id="close-register-modal">&times;</span>
-            <h2>Register</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn">confirm</button>
-            </form>
-        </div>
+<!-- Login Modal -->
+<div class="login-modal" id="login-modal" style="display:none;">
+    <div class="login-modal-content">
+        <span class="close-modal" id="close-login-modal">&times;</span>
+        <h2>Login</h2>
+        <form>
+            <div class="form-group">
+                <input type="text" id="username"  name="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password"  id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <a href="#" class="forgot-password">Forgot my password?</a>
     </div>
-    <!-- End of Register Modal -->
+</div>
 </header>
 <script src="{{ asset('js/scripts.js') }}"></script>
