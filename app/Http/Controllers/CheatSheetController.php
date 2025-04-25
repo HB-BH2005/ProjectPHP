@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\CheatSheet;
 use App\Models\Level;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class CourseController extends Controller
+class CheatSheetController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
-        return view('admin.courses', compact('courses'));
+        $cheatSheets = CheatSheet::all();
+        return view('admin.cheat_sheets', compact('cheatSheets'));
     }
 
     public function create()
     {
         $levels = Level::all();
         $subjects = Subject::all();
-        return view('admin.add_course', compact('levels', 'subjects'));
+        return view('admin.cheat_sheets.create', compact('levels', 'subjects'));
     }
 
     public function store(Request $request)
@@ -31,33 +31,27 @@ class CourseController extends Controller
             'content' => 'required|string',
             'level_id' => 'required|exists:levels,id',
             'subject_id' => 'required|exists:subjects,id',
-            'cover' => 'sometimes|file|image|max:2048',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.courses.create')
+            return redirect()->route('admin.cheat_sheets.create')
                 ->withErrors($validator)
                 ->withInput();
         }
 
         $data = $request->only(['nom', 'content', 'level_id', 'subject_id']);
 
-        if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')->store('covers', 'public');
-            $data['cover'] = $coverPath;
-        }
+        CheatSheet::create($data);
 
-        Course::create($data);
-
-        return redirect()->route('admin.courses.index')->with('success', 'Course added successfully.');
+        return redirect()->route('admin.cheat_sheets.index')->with('success', 'Cheat Sheet added successfully.');
     }
 
     public function edit($id)
     {
-        $course = Course::findOrFail($id);
+        $cheatSheet = CheatSheet::findOrFail($id);
         $levels = Level::all();
         $subjects = Subject::all();
-        return view('admin.courses.edit', compact('course', 'levels', 'subjects'));
+        return view('admin.cheat_sheets.edit', compact('cheatSheet', 'levels', 'subjects'));
     }
 
     public function update(Request $request, $id)
@@ -67,34 +61,28 @@ class CourseController extends Controller
             'content' => 'required|string',
             'level_id' => 'required|exists:levels,id',
             'subject_id' => 'required|exists:subjects,id',
-            'cover' => 'sometimes|file|image|max:2048',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.courses.edit', $id)
+            return redirect()->route('admin.cheat_sheets.edit', $id)
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        $course = Course::findOrFail($id);
+        $cheatSheet = CheatSheet::findOrFail($id);
 
         $data = $request->only(['nom', 'content', 'level_id', 'subject_id']);
 
-        if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')->store('covers', 'public');
-            $data['cover'] = $coverPath;
-        }
+        $cheatSheet->update($data);
 
-        $course->update($data);
-
-        return redirect()->route('admin.courses.index')->with('success', 'Course updated successfully.');
+        return redirect()->route('admin.cheat_sheets.index')->with('success', 'Cheat Sheet updated successfully.');
     }
 
     public function destroy($id)
     {
-        $course = Course::findOrFail($id);
-        $course->delete();
+        $cheatSheet = CheatSheet::findOrFail($id);
+        $cheatSheet->delete();
 
-        return redirect()->route('admin.courses.index')->with('success', 'Course deleted successfully.');
+        return redirect()->route('admin.cheat_sheets.index')->with('success', 'Cheat Sheet deleted successfully.');
     }
 }

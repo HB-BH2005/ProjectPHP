@@ -1,4 +1,4 @@
-<!-- filepath: c:\Users\ijlal\ProjectPHP-3 - Copie\ProjectPHP\resources\views\admin\courses\create.blade.php -->
+<!-- filepath: c:\Users\ijlal\ProjectPHP-3 - Copie\ProjectPHP\resources\views\admin\cheat_sheets\create.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +23,11 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('admin.courses.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.cheat_sheets.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-12">
-                                <label for="nom">Course Name</label>
+                                <label for="nom">Cheat sheet Name</label>
                                 <input type="text" name="nom" id="nom" class="form-control" value="{{ old('nom') }}" required>
                                 @error('nom')
                                     <span class="text-danger">{{ $message }}</span>
@@ -73,7 +73,7 @@
                             </div>
 
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary mt-3">Create Course</button>
+                                <button type="submit" class="btn btn-primary mt-3">Create cheat sheet</button>
                             </div>
                         </div>
                     </form>

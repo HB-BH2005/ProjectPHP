@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LevelController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CheatSheetController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -26,7 +26,7 @@ Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects.ind
 //
 // User Routes (Authenticated Users)
 //
-Route::get('/my-courses', [CourseController::class, 'index'])->name('my-courses');
+Route::get('/my-cheat-sheets', [CheatSheetController::class, 'index'])->name('my-cheat-sheets');
 
 //
 // Admin Routes
@@ -34,7 +34,7 @@ Route::get('/my-courses', [CourseController::class, 'index'])->name('my-courses'
 Route::get('/admin', fn() => view('admin.home'))->name('admin');
 
 // Admin: Other Static Pages
-Route::get('/admin/courses', fn() => view('admin.courses'))->name('admin.courses');
+Route::get('/admin/cheat-sheets', fn() => view('admin.cheat_sheets'))->name('admin.cheat_sheets');
 use App\Http\Controllers\UserController;
 
 Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
@@ -63,14 +63,14 @@ Route::prefix('admin/subjects')->group(function () {
 //// Logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/admin/courses', [CourseController::class, 'index'])->name('admin.courses.index');
+Route::get('/admin/cheat-sheets', [CheatSheetController::class, 'index'])->name('admin.cheat_sheets.index');
 
-Route::prefix('admin/courses')->group(function () {
-    Route::get('/create', [CourseController::class, 'create'])->name('admin.courses.create');
-    Route::post('/', [CourseController::class, 'store'])->name('admin.courses.store');
-    Route::get('/{id}/edit', [CourseController::class, 'edit'])->name('admin.courses.edit');
-    Route::put('/{id}', [CourseController::class, 'update'])->name('admin.courses.update');
-    Route::delete('/{id}', [CourseController::class, 'destroy'])->name('admin.courses.delete');
+Route::prefix('admin/cheat-sheets')->group(function () {
+    Route::get('/create', [CheatSheetController::class, 'create'])->name('admin.cheat_sheets.create');
+    Route::post('/', [CheatSheetController::class, 'store'])->name('admin.cheat_sheets.store');
+    Route::get('/{id}/edit', [CheatSheetController::class, 'edit'])->name('admin.cheat_sheets.edit');
+    Route::put('/{id}', [CheatSheetController::class, 'update'])->name('admin.cheat_sheets.update');
+    Route::delete('/{id}', [CheatSheetController::class, 'destroy'])->name('admin.cheat_sheets.delete');
 });
 
 Route::prefix('admin/users')->group(function () {
