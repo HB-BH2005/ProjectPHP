@@ -6,6 +6,10 @@
     --text-black-700: #504e70;
     --skin-color: #2e15e9; /* Primary accent color */
 }
+.highlight {
+    background-color: yellow;
+    color: black;
+}
 
 body {
     line-height: 1.8; /* Improved line spacing */

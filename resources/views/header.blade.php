@@ -1,7 +1,7 @@
 <header class="header">    
     <div class="top-bar">
-        <form class="search-form">
-            <input type="text" class="search-input" placeholder="Search...">
+        <form class="search-form" onsubmit="handleSearch(event)">
+            <input type="text" id="search-input" class="search-input" placeholder="Search...">
             <button type="submit" class="search-btn" aria-label="Search">
                 <i class="fa fa-search"></i>
             </button>
@@ -50,3 +50,4 @@
     </div>
     <!-- End of Register Modal -->
 </header>
+<script src="{{ asset('js/scripts.js') }}"></script>

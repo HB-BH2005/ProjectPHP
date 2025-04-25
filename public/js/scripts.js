@@ -87,3 +87,40 @@ function handleFormSubmit(event) {
         alert("An error occurred. Please try again.");
     });
 }
+
+  function handleSearch(event) {
+    event.preventDefault();
+    const searchTerm = document.getElementById("search-input").value.trim();
+
+    if (!searchTerm) return;
+
+    const regex = new RegExp(`(${searchTerm})`, "gi");
+
+    removeHighlights(document.body);
+    highlightMatches(document.body, regex);
+  }
+
+  function highlightMatches(node, regex) {
+    if (
+      node.nodeType === 3 &&
+      node.parentNode &&
+      node.parentNode.nodeName !== "SCRIPT" &&
+      node.parentNode.nodeName !== "STYLE"
+    ) {
+      const match = node.nodeValue.match(regex);
+      if (match) {
+        const span = document.createElement("span");
+        span.innerHTML = node.nodeValue.replace(regex, '<span class="highlight">$1</span>');
+        node.replaceWith(span);
+      }
+    } else if (node.nodeType === 1 && node.childNodes) {
+      [...node.childNodes].forEach(child => highlightMatches(child, regex));
+    }
+  }
+
+  function removeHighlights(container) {
+    const highlights = container.querySelectorAll(".highlight");
+    highlights.forEach(span => {
+      span.replaceWith(document.createTextNode(span.textContent));
+    });
+  }

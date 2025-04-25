@@ -21,6 +21,7 @@
 
         <!--===Main content start===-->
         <div class="main-content">
+            <section class="contact section">
                 <div class="container">
                     <div class="row">
                         <div class="section-title padd-15">
@@ -58,6 +59,7 @@
                         </form>
                     </div>
                 </div>
+            </section>
         </div>
         <!--===Main content END===-->
 
