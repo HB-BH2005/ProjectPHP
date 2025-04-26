@@ -51,7 +51,7 @@
                                 </div>
                             @endforeach
                         @else
-                            <p>No courses available for this subject.</p>
+                            <p>No lessons available for this subject.</p>
                         @endif
                     </div>
 
