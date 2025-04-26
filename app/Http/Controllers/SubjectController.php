@@ -31,31 +31,37 @@ class SubjectController extends Controller
 
     // Admin : enregistrer un nouveau sujet
     public function store(Request $request)
-    {
-        $request->validate([
-            'nom' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'cover' => 'nullable|image|max:2048',
-            'level_id' => 'required|exists:levels,id',
-        ]);
+{
+    $validated = $request->validate([
+        'nom' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'cover' => 'nullable|image|max:2048',
+        'level_id' => 'required|exists:levels,id',
+    ]);
 
-        $subject = new Subject();
-        $subject->nom = $request->nom;
-        $subject->description = $request->description;
-        $subject->level_id = $request->level_id;
+    $subject = new Subject();
+    $subject->nom = $validated['nom'];
+    $subject->level_id = $validated['level_id'];
 
-        // Check if a cover image is uploaded, otherwise set default image
-        if ($request->hasFile('cover')) {
-            $subject->cover = $request->file('cover')->store('subjects', 'public');
-        } else {
-            // If no file is uploaded, use the default image stored in public/storage/subjects
-            $subject->cover = 'subjects/default.jpg'; // Default image path (relative to storage path)
-        }
+    // If description is given, use it; otherwise, set a default description
+    $subject->description = !empty($validated['description'])
+        ? $validated['description']
+        : 'No description provided for this subject.';
 
-        $subject->save();
-
-        return redirect()->route('admin.subjects.index')->with('success', 'Sujet créé avec succès !');
+    // Handle the cover image upload or use default image
+    if ($request->hasFile('cover')) {
+        $subject->cover = $request->file('cover')->store('subjects', 'public');
+    } else {
+        $subject->cover = 'subjects/default.jpg';
     }
+
+    $subject->save();
+
+    return redirect()->route('levels.show', ['slug' => $subject->level->slug])->with('success', 'Subject created successfully!');
+
+}
+
+
 
     // Admin : formulaire d’édition
     public function edit($id)

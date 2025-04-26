@@ -25,8 +25,6 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/levels', [LevelController::class, 'index'])->name('levels.index');
 Route::get('/levels/{slug}', [LevelController::class, 'show'])->name('levels.show');
 Route::get('/subjects/{id}', [SubjectController::class, 'show'])->name('subjects.show');
-// Optional: if you want to list all subjects on one page
-Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects.index');
 
 //
 // User Routes (Authenticated Users)
