@@ -25,7 +25,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -37,14 +37,17 @@ class RegisterController extends Controller
         }
 
         $user = User::create([
-            'name' => $request->input('name'),
+            'username' => $request->input('username'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'role' => 'user', // default role
         ]);
 
         Auth::login($user);
-
-        return redirect('/home');
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.home');
+        } else {
+            return redirect()->route('/');
+        }
     }
 }

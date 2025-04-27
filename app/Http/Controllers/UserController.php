@@ -9,24 +9,25 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function index()
+        public function index()
     {
         $users = User::all();
-        return view('admin.users', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
+    
+
 
     public function create()
     {
-        return view('admin.add_user');
+        return view('admin.users.create');
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
-            'role' => 'required|in:user,admin',
         ]);
 
         if ($validator->fails()) {
@@ -36,12 +37,18 @@ class UserController extends Controller
         }
 
         $user = new User();
-        $user->name = $request->input('name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        $user->role = $request->input('role');
         $user->save();
 
-        return redirect()->route('admin.users')->with('success', 'User added successfully.');
+        return redirect()->route('admin.users.index')->with('success', 'User added successfully.');
+    }
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id); // Find the user by ID or throw a 404 error if not found
+        $user->delete(); // Delete the user
+
+        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
     }
 }

@@ -23,8 +23,10 @@ class Subject extends Model
     }
 
     // A subject has many courses
-    public function courses()
+    
+
+    public function lessons()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Lesson::class);
     }
 }

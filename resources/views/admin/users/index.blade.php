@@ -43,31 +43,27 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    {{-- <th>score</th> --}}
-                                    <th>role</th>
                                     <th>Action</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($users->count() > 0)
+                                @if($users->isNotEmpty())
                                     @foreach($users as $user)
                                         <tr>
-                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->username }}</td>
                                             <td>{{ $user->email }}</td>
-                                            {{-- <td>{{ $user->score ?? '-' }}</td> --}}
-                                            <td>{{ $user->role }}</td>
+
+                                        
                                             <td>
-                                                <a href="{{ url('admin/users/' . $user->id . '/edit') }}" class="action-icon">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <form action="{{ url('admin/users/' . $user->id) }}" method="POST" style="display:inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="action-icon delete-icon" onclick="return confirm('Are you sure you want to delete this user?')">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </form>
+                                               
+                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                    Delete
+                                                </button>
+                                            </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -80,9 +76,11 @@
                             </tbody>
                         </table>
                     </div>
-<div class="add-user">
-    <a href="{{ route('admin.users.create') }}" class="btn">Add New user</a>
-</div>
+                    <div class="add-user">
+                        <a href="{{ route('admin.users.create') }}" class="btn">Add New Admin</a>
+
+                    </div>
+
                 </div>
                 @include("admin.footer")
         </div>

@@ -5,45 +5,57 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\CheatSheetController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LessonContentController;
 
 //
 // Public Routes
 //
-Route::get('/home', fn() => view('Home'))->name('home');
+Route::get('/', fn() => view('Home'))->name('home');
 Route::get('/contact', fn() => view('Contact'))->name('contact');
 Route::get('/about', fn() => view('About'))->name('about');
-
-use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
 // Levels and Subjects (Public)
 Route::get('/levels', [LevelController::class, 'index'])->name('levels.index');
 Route::get('/levels/{slug}', [LevelController::class, 'show'])->name('levels.show');
-Route::get('/subjects/{id}', [SubjectController::class, 'show'])->name('subjects.show');
+Route::get('subjects/{subject}', [SubjectController::class, 'show'])->name('subjects.show');
+Route::get('lessons/{lesson}', [LessonController::class, 'show'])->name('lessons.show');
+
 
 //
 // User Routes (Authenticated Users)
 //
 Route::get('/my-cheat-sheets', [CheatSheetController::class, 'index'])->name('my-cheat-sheets');
 
-//
+//========================User Routes==============================================
+
+Route::middleware(['auth', 'admin']) // <- 'admin' is the alias (string)
+    ->prefix('admin')
+    ->group(function () {
+        // Route::get('/', [UserController::class, 'index'])->name('admin.home');
+        Route::get('/admin', fn() => view('admin.home'))->name('admin.home');
+        
+    });
+
+
+
 // Admin Routes
 //
-Route::get('/admin', fn() => view('admin.home'))->name('admin');
-
-// Admin: Other Static Pages
+// Route::get('/admin', fn() => view('admin.home'))->name('admin');
 Route::get('/admin/cheat-sheets', fn() => view('admin.cheat_sheets'))->name('admin.cheat_sheets');
-use App\Http\Controllers\UserController;
-
-Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
-Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
-Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
 Route::get('/admin/messages', fn() => view('admin.messages'))->name('admin.messages');
+
+// Admin: Users Management
+Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
+Route::get('admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+Route::post('admin/users', [UserController::class, 'store'])->name('admin.users.store');
+Route::delete('admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
 // Admin: Levels Management
 Route::get('/admin/levels', [LevelController::class, 'adminIndex'])->name('admin.levels.index');
@@ -63,21 +75,24 @@ Route::prefix('admin/subjects')->group(function () {
     Route::delete('/{id}', [SubjectController::class, 'destroy'])->name('admin.subjects.destroy');
 });
 
-//// Logout
+// Admin: Lessons Management
+Route::prefix('admin/lessons')->group(function () {
+    Route::get('/', [LessonController::class, 'index'])->name('admin.lessons.index');
+    Route::get('/create', [LessonController::class, 'create'])->name('admin.lessons.create');
+    Route::post('/', [LessonController::class, 'store'])->name('admin.lessons.store');
+    Route::get('/{id}/edit', [LessonController::class, 'edit'])->name('admin.lessons.edit');
+    Route::put('/{id}', [LessonController::class, 'update'])->name('admin.lessons.update');
+    Route::delete('/{id}', [LessonController::class, 'destroy'])->name('admin.lessons.destroy');
+});
+//Admin: Lesson Content Management
+Route::prefix('admin/lesson_contents')->group(function () {
+    Route::get('/', [LessonContentController::class, 'index'])->name('admin.lesson_contents.index');
+    Route::get('/create', [LessonContentController::class, 'create'])->name('admin.lesson_contents.create');
+    Route::post('/', [LessonContentController::class, 'store'])->name('admin.lesson_contents.store');
+    Route::get('/{id}/edit', [LessonContentController::class, 'edit'])->name('admin.lesson_contents.edit');
+    Route::put('/{id}', [LessonContentController::class, 'update'])->name('admin.lesson_contents.update');
+    Route::delete('/{id}', [LessonContentController::class, 'destroy'])->name('admin.lesson_contents.destroy');
+});
+
+// Logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('/admin/cheat-sheets', [CheatSheetController::class, 'index'])->name('admin.cheat_sheets.index');
-
-Route::prefix('admin/cheat-sheets')->group(function () {
-    Route::get('/create', [CheatSheetController::class, 'create'])->name('admin.cheat_sheets.create');
-    Route::post('/', [CheatSheetController::class, 'store'])->name('admin.cheat_sheets.store');
-    Route::get('/{id}/edit', [CheatSheetController::class, 'edit'])->name('admin.cheat_sheets.edit');
-    Route::put('/{id}', [CheatSheetController::class, 'update'])->name('admin.cheat_sheets.update');
-    Route::delete('/{id}', [CheatSheetController::class, 'destroy'])->name('admin.cheat_sheets.delete');
-});
-
-Route::prefix('admin/users')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name('admin.users'); // Define the 'admin.users' route
-    Route::get('/create', [UserController::class, 'create'])->name('admin.users.create');
-    Route::post('/', [UserController::class, 'store'])->name('admin.users.store');
-});

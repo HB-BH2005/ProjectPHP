@@ -67,19 +67,19 @@
                     <h3 class="contact-title padd-15">SEND US AN EMAIL</h3>
                     <h4 class="contact-sub-title padd-15">WE ARE VERY RESPONSIVE TO MESSAGES</h4>
                     <!--===== Contact Form -->
-                    <form action="https://formspree.io/f/mwplgdka" method="POST" onsubmit="return handleFormSubmit(event)">
+                    <form action="https://usebasin.com/f/3e8e2a532e5c" method="POST" onsubmit="return handleFormSubmit(event)">
                         <!--===== Contact Form-->
                         <div class="row">
                             <div class="contact-form padd-15">
                                 <div class="row">
                                     <div class="form-item col-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name" required>
+                                            <input type="name" iid="name" name="name"   class="form-control" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="form-item col-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email" required>
+                                            <input type="email"  id="email" class="form-control" placeholder="Email" required>
                                         </div>
                                     </div>
                                 </div>
@@ -93,20 +93,23 @@
                                 <div class="row">
                                     <div class="form-item col-12 padd-15">
                                         <div class="form-group">
+                                            
                                             <textarea name="message" class="form-control" id="message" placeholder="Message" required ></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-item col-12 padd-15">
+                                        <input type="file" name="file-upload" />
                                         <button type="submit" class="btn">Send Message</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                 
-                    </div>
-                </section>            
+                    </form>   
+                </div>
+            </section>            
                 <!--=====Contact Section END=====-->
 
             @include('footer')

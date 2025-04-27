@@ -10,12 +10,7 @@ use Illuminate\Support\Str;
 
 
 class LevelController extends Controller
-{   // Temporarily commented out until admin role is implemented
-    // public function __construct()
-    // {
-    //     $this->middleware('admin'); // Protect all admin routes with the admin middleware
-    // }
-    // Show levels on the public site
+{   
     public function index()
     {
         $levels = Level::all(); // Fetch all levels

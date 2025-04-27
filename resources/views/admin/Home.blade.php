@@ -26,6 +26,19 @@
                             <p>
                                 Here, you can add, delete, and update courses, manage users, and view your messages.
                             </p>
+                            <a href="{{ route('logout') }}" class="btn logout" id="logout-link">Logout</a>
+                            <!-- Hidden Logout Form -->
+                            <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
+                                @csrf
+                            </form>
+
+                            <script>
+                                document.getElementById('logout-link').addEventListener('click', function(e) {
+                                    e.preventDefault();  // Prevent the default anchor link behavior
+                                    document.getElementById('logout-form').submit();  // Submit the hidden form
+                                });
+                            </script>
+
                         </div>
                     </div>
                 </div>

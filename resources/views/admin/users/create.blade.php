@@ -21,8 +21,8 @@
                     <form action="{{ route('admin.users.store') }}" method="POST" class="user-form">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" value="{{ old('name') }}" required />
+                            <label for="username">Name:</label>
+                            <input type="text" id="username" name="username" value="{{ old('username') }}" required />
                             @error('name')
                                 <div class="error">{{ $message }}</div>
                             @enderror
@@ -48,18 +48,8 @@
                                 <div class="error">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="role">Role:</label>
-                            <select id="role" name="role" required>
-                                <option value="">Select Role</option>
-                                <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
-                                <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-                            </select>
-                            @error('role')
-                                <div class="error">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn">Add User</button>
+               
+                        <button type="submit" class="btn">Add Admin</button>
                     </form>
                 </div>
             </section>

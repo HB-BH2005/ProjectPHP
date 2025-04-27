@@ -8,46 +8,43 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * Show the login form.
-     */
+    // Show login form
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle a login request to the application.
-     */
+    // Handle login request
     public function login(Request $request)
     {
+        
+         // Validate input
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
+        // Attempt to login
+        if (Auth::attempt($credentials)) {
+            
             $request->session()->regenerate();
-
-            return redirect()->intended('/home');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            return redirect()->intended(route('admin.home')); // Redirect to intended page or home
+            
+        } 
+        return redirect()->route('login')
+            ->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ]);
     }
 
-    /**
-     * Log the user out of the application.
-     */
+    // Handle logout
     public function logout(Request $request)
     {
         Auth::logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/home');
+        return redirect('/');
     }
 }

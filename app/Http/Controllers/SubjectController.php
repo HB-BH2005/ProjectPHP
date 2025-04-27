@@ -18,9 +18,14 @@ class SubjectController extends Controller
     // Public : afficher un seul sujet avec ses cours
     public function show($id)
     {
-        $subject = Subject::with('courses')->findOrFail($id);
+        $subject = Subject::with(['lessons' => function($query) {
+            // Order lessons by the 'order' field
+            $query->orderBy('order');
+        }])->findOrFail($id);
+    
         return view('subjects.show', compact('subject'));
     }
+    
 
     // Admin : formulaire de création
     public function create()
