@@ -31,15 +31,14 @@ Route::get('lessons/{lesson}', [LessonController::class, 'show'])->name('lessons
 //
 // User Routes (Authenticated Users)
 //
-Route::get('/my-cheat-sheets', [CheatSheetController::class, 'index'])->name('my-cheat-sheets');
 
 //========================User Routes==============================================
 
 Route::middleware(['auth', 'admin']) // <- 'admin' is the alias (string)
     ->prefix('admin')
     ->group(function () {
-        // Route::get('/', [UserController::class, 'index'])->name('admin.home');
         Route::get('/admin', fn() => view('admin.home'))->name('admin.home');
+        
         
     });
 
@@ -47,9 +46,6 @@ Route::middleware(['auth', 'admin']) // <- 'admin' is the alias (string)
 
 // Admin Routes
 //
-// Route::get('/admin', fn() => view('admin.home'))->name('admin');
-Route::get('/admin/cheat-sheets', fn() => view('admin.cheat_sheets'))->name('admin.cheat_sheets');
-Route::get('/admin/messages', fn() => view('admin.messages'))->name('admin.messages');
 
 // Admin: Users Management
 Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
