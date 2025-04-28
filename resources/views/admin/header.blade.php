@@ -12,16 +12,6 @@
 
         <div class="profile">
             <img src="{{ asset('images/Profile-PNG-Photo.png') }}" alt="Profile Picture" class="profile-pic" onclick="toggleProfilePopup()">
-            
-            <div class="profile-dropdown" id="profileDropdown" style="display: none;">
-                <a href="#" onclick="openProfileModal()">Profile</a>
-                <a href="#" onclick="openSettingsModal()">Settings</a>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit">Logout</button>
-                </form>
-            </div>
         </div>
     </div>  
 </header>
-<script src="{{ asset('js/scripts.js') }}"></script>
