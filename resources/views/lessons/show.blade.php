@@ -12,34 +12,35 @@
     <link rel="stylesheet" href="{{ asset('css/style_admin.css') }}?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        /* General styling for content items */
         .content-item {
-            margin-bottom: 20px;
-            padding: 15px;
+            width: 100%;
+            max-width: 800px; /* Limit the max width */
+            margin: 20px auto; /* Center */
+            padding: 20px;
             border: 1px solid var(--bg-black-50);
             border-radius: 10px;
             background-color: var(--bg-black-100);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
-        /* Text content styling */
         .content-item p {
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.8;
             color: var(--text-black-700);
             margin: 0;
         }
 
-        /* PDF content styling */
         .content-item .btn-primary {
             display: inline-block;
             font-size: 16px;
             font-weight: 600;
-            padding: 10px 20px;
+            padding: 12px 25px;
             color: white;
             border-radius: 5px;
             background: var(--skin-color);
             text-decoration: none;
+            margin-top: 10px;
             transition: all 0.3s ease;
         }
 
@@ -48,70 +49,50 @@
             transform: scale(1.05);
         }
 
-        /* Video content styling */
         .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
             overflow: hidden;
+            position: relative;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
         }
 
         .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: none;
         }
 
-        /* Audio content styling */
-        .content-item audio {
+        .content-item audio, .content-item img {
             width: 100%;
-            margin-top: 10px;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        /* Cheatsheet (image) styling */
-        .content-item img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 10px;
         }
 
-        /* Responsive adjustments */
+        /* Responsive for mobile */
         @media (max-width: 768px) {
             .content-item {
-                padding: 10px;
+                padding: 15px;
             }
-
             .content-item p {
-                font-size: 14px;
-            }
-
-            .content-item .btn-primary {
-                font-size: 14px;
-                padding: 8px 15px;
-            }
-
-            .video-container iframe {
-                height: 300px;
+                font-size: 16px;
             }
         }
-    </style>
+</style>
+
 </head>
 
 <body>
     <div class="main-container">
-        @include('admin.navbar')
+        @include('navbar')
 
         <div class="main-content">
-            @include('admin.header')
+            @include('header')
 
             <section class="content-lesson-details section">
                 <div class="container">
@@ -162,7 +143,7 @@
                 </div>
             </section>
 
-            @include('admin.footer')
+            @include('footer')
         </div>
     </div>
 

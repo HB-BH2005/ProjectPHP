@@ -17,12 +17,20 @@ class LessonContentController extends Controller
         return view('admin.lesson_contents.index', compact('lessonContents'));
     }
 
-    // Display a single lesson content
+   
     public function show($id)
     {
-        $lessonContent = LessonContent::findOrFail($id); // Find the lesson content by ID
-        return view('lessons.show', compact('lessonContent')); // Show the lesson content details
+        $lesson = Lesson::findOrFail($id);
+
+        // Charger tous les contenus liés à ce lesson
+        $lessonContents = LessonContent::where('lesson_id', $lesson->id)
+            ->orderBy('order')
+            ->get();
+
+        return view('lessons.show', compact('lesson', 'lessonContents'));
     }
+
+
 
     // Show the form to create a new lesson content
     public function create()
