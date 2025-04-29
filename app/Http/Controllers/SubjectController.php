@@ -90,6 +90,10 @@ class SubjectController extends Controller
         $subject->nom = $request->nom;
         $subject->description = $request->description;
         $subject->level_id = $request->level_id;
+        
+        $subject->description = !empty($validated['description'])
+        ? $validated['description']
+        : 'No description provided for this subject.';
 
         // Check if a cover image is uploaded, otherwise keep the existing or set default
         if ($request->hasFile('cover')) {

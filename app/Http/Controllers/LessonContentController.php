@@ -97,6 +97,13 @@ class LessonContentController extends Controller
         return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
     }
 }
+    // Show the form to edit an existing lesson content
+    public function edit($id)
+    {
+        $lessonContent = LessonContent::findOrFail($id);
+        $lessons = Lesson::all(); // Fetch all lessons
+        return view('admin.lesson_contents.edit', compact('lessonContent', 'lessons')); // Show the edit form
+    }
     
     
     // Update an existing lesson content
