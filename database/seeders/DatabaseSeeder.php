@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,13 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        // $this->call(LevelSeeder::class);
-        // $this->call(SubjectSeeder::class);
+        // Appels des seeders
+        $this->call([
+            LevelSeeder::class,
+            SubjectSeeder::class,
+            LessonSeeder::class,
+            LessonContentSeeder::class,
+
+
+        ]);
+
+        // Création d'un utilisateur avec mot de passe haché
         User::factory()->create([
             'username' => 'test3',
             'email' => 'test3@gmail.com',
-            'password' => 'test32025'
+            'password' => Hash::make('test32025'),
         ]);
     }
 }
