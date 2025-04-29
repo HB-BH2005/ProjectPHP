@@ -59,7 +59,7 @@ Level: Level 1
 
 Admins can add lesson content using a dynamic editor:
 - Text, titles, and formatting
-- Embedded media (images, YouTube, etc.)
+- Embedded media (images, text, etc.)
 - Custom HTML blocks
 
 ---
