@@ -23,11 +23,10 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        // Création d'un utilisateur avec mot de passe haché
         User::factory()->create([
             'username' => 'test3',
             'email' => 'test3@gmail.com',
-            'password' => test32025,
+            'password' => 'test32025',
         ]);
     }
 }
