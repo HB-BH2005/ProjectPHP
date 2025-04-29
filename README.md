@@ -74,8 +74,6 @@ cd ProjectPHP
 # Install backend dependencies
 composer install
 
-
-
 # Set up environment
 cp .env.example .env
 php artisan key:generate
@@ -86,7 +84,6 @@ php artisan migrate --seed
 # Run the server
 php artisan serve
 ```
-
 
 
 > Designed with children in mind — fun, educational, and fully customizable.
