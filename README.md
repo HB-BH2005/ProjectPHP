@@ -1,5 +1,5 @@
 
-# 🌍 ProjectPHP — Learning Platform for Kids
+#  ProjectPHP —> Learning Platform for Kids
 
 **ProjectPHP** is a Laravel-based educational platform designed to help children learn English through a fun and structured experience. Content is organized into **Levels**, **Subjects**, and **Lessons**, with admin tools for easy content management.
 
