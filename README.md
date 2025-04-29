@@ -1,70 +1,93 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 🌍 ProjectPHP — Learning Platform for Kids
 
-## About Laravel
+**ProjectPHP** is a Laravel-based educational platform designed to help children learn English through a fun and structured experience. Content is organized into **Levels**, **Subjects**, and **Lessons**, with admin tools for easy content management.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Purpose
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+A user-friendly learning environment where children can explore  lessons tailored to their level. Administrators can manage content flexibly — like a mini WordPress for education.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🔑 Core Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 👦 User Panel(user or guest is the same as it is for children)
+- Child-friendly interface
+- Browse lessons by Levels → Subjects → Lessons
+- View multimedia-rich lesson content
+- Static pages: **About** and **Contact**:
+- **About Page**: Describes the platform’s mission
+- **Contact Page**: Lets users reach out to the team
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛠️ Admin Panel
+- **Admins**: Create, update, delete admin users
+- **Levels**: Manage learning levels (e.g. Beginner, Intermediate)
+- **Subjects**: Organized under each level
+- **Lessons**: Grouped by subject
+- **Lesson Contents**:
+  - Add/edit rich content (text, videos, quizzes)
+  - Use WYSIWYG editor (like WordPress)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🧭 Content Structure
 
-### Premium Partners
+```
+Level: Level 1
+│
+└── Subject: English
+    ├── Lesson: Alphabetics
+    │   └── Content: Text ...
+    └── ...
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## ⚙️ Tech Stack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Framework**: Laravel (PHP 8+)
+- **Frontend**: Blade + Vite
+- **Database**: MySQL
+- **Auth**: Laravel Breeze or Jetstream
+- **Testing**: PHPUnit
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 💡 WordPress-Inspired Content Editing
 
-## Security Vulnerabilities
+Admins can add lesson content using a dynamic editor:
+- Text, titles, and formatting
+- Embedded media (images, YouTube, etc.)
+- Custom HTML blocks
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🚀 Installation Guide
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# ProjectPHP
->>>>>>> 73cd70608d95c26f47223581cd2238fa5236ede5
+```bash
+# Clone the project
+git clone <your-git-url>
+cd ProjectPHP
+
+# Install backend dependencies
+composer install
+
+
+
+# Set up environment
+cp .env.example .env
+php artisan key:generate
+
+# Migrate and seed the database
+php artisan migrate --seed
+
+# Run the server
+php artisan serve
+```
+
+
+
+> Designed with children in mind — fun, educational, and fully customizable.
+
