@@ -16,7 +16,7 @@
             <section class="add-user section">
                 <div class="container">
                     <div class="section-title padd-15">
-                        <h2>Add New User</h2>
+                        <h2>Add New Admin</h2>
                     </div>
                     <form action="{{ route('admin.users.store') }}" method="POST" class="user-form">
                         @csrf

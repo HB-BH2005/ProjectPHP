@@ -31,6 +31,7 @@
                         </div>
                     </div>
                 </div>
+                @include('footer') 
             </section>
             <!--=== Home Section END ===-->
             @include('footer') 
