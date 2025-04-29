@@ -33,8 +33,8 @@
                 </div>
             </section>
             <!--=== Home Section END ===-->
+            @include('footer') 
         </div>
-        @include('footer') 
     </div>
     <script src="{{ asset('js/scripts.js') }}"></script>
 

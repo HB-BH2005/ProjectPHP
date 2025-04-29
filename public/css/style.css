@@ -369,35 +369,7 @@ footer p {
     background-color: var(--skin-color);
     color: white;
 }
-/* Register button */
-.register-btn {
-    padding: 5px 15px;
-    background-color: var(--bg-black-100);
-    color: var(--skin-color);
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-    margin-left: 350px; ; 
-}
 
-.register-btn:hover {
-    background-color: var(--skin-color);
-    color: white;
-}
-/* Modal background */
-.login-modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
 /* Profile section */
 .profile {
     position: relative;
@@ -451,70 +423,11 @@ footer p {
     display: flex;
 }
 
-/* Modal content */
-.login-modal-content {
-    background-color: var(--bg-black-100);
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
+
 
 /* Close button */
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-/* Form styling */
-.login-modal-content .form-group {
-    margin-bottom: 15px;
 
-}
-
-.login-modal-content input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--bg-black-50);
-    border-radius: 25px;
-}
-
-.login-modal-content .btn {
-    background-color: var(--skin-color);
-    color: var(--bg-black-100);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.login-modal-content .btn:hover {
-    background-color: var(--skin-color);
-}
-
-/* Forgot password link */
-.forgot-password {
-    display: block;
-    margin-top: 10px;
-    color: var(--skin-color);
-    text-decoration: none;
-    font-size: 14px;
-    text-align: left;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-.centered {
-    text-align: center;
-}
 /* home */
 
 .home {
