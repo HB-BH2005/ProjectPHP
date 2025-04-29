@@ -6,6 +6,6 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-<a href="{{ route('login') }}" class="login-btn">Login</a>
-</div>
+        <a href="{{ route('login') }}" class="login-btn">Login</a>
+    </div>
 </header>
