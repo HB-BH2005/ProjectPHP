@@ -22,11 +22,7 @@ class Level extends Model
         return $this->hasMany(Subject::class);
     }
 
-    // A Level has many Courses
-    public function courses()
-    {
-        return $this->hasMany(Course::class);
-    }
+    
 
     // Automatically generate and ensure uniqueness of the slug
     protected static function booted()
