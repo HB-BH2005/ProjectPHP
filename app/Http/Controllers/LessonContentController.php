@@ -17,7 +17,6 @@ class LessonContentController extends Controller
         return view('admin.lesson_contents.index', compact('lessonContents'));
     }
 
-   
     public function show($id)
     {
         $lesson = Lesson::findOrFail($id);
@@ -29,8 +28,6 @@ class LessonContentController extends Controller
 
         return view('lessons.show', compact('lesson', 'lessonContents'));
     }
-
-
 
     // Show the form to create a new lesson content
     public function create()
@@ -47,56 +44,56 @@ class LessonContentController extends Controller
 
     // Store a new lesson content
     public function store(Request $request)
-{
-    try {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'lesson_id' => 'required|exists:lessons,id',
-            'content_type' => 'required|string',
-            'order' => 'nullable|integer',
-            'content_url' => 'nullable|file|mimes:pdf,mp4,mp3,jpg,jpeg,png|max:51200',
-            'text_content' => 'nullable|string',
-        ]);
+    {
+        try {
+            // Validate the request data
+            $validatedData = $request->validate([
+                'lesson_id' => 'required|exists:lessons,id',
+                'content_type' => 'required|string',
+                'order' => 'nullable|integer',
+                'content_url' => 'nullable|file|mimes:pdf,mp4,mp3,jpg,jpeg,png|max:51200',
+                'text_content' => 'nullable|string',
+            ]);
 
-        $contentUrl = null;
+            $contentUrl = null;
 
-        // Check if a file is uploaded
-        if ($request->hasFile('content_url')) {
+            // Check if a file is uploaded
+            if ($request->hasFile('content_url')) {
+                $file = $request->file('content_url');
+                Log::info('File uploaded: ' . $file->getClientOriginalName());
+                Log::info('File size: ' . $file->getSize() . ' bytes');
+                Log::info('File MIME type: ' . $file->getMimeType());
 
-            $file = $request->file('content_url');
-            Log::info('File uploaded: ' . $file->getClientOriginalName());
-            Log::info('File size: ' . $file->getSize() . ' bytes');
-            Log::info('File MIME type: ' . $file->getMimeType());
-
-            if ($file->isValid()) {
-                // Store the file and get the path
-                $contentUrl = $file->store('lesson_contents', 'public');
-                Log::info('File successfully stored at: ' . $contentUrl);
+                if ($file->isValid()) {
+                    // Store the file and get the path
+                    $contentUrl = $file->store('lesson_contents', 'public');
+                    Log::info('File successfully stored at: ' . $contentUrl);
+                } else {
+                    Log::error('File is invalid.');
+                    throw new \Exception('The content url failed to upload.');
+                }
             } else {
-                Log::error('File is invalid.');
-                throw new \Exception('The content url failed to upload.');
+                Log::warning('No file uploaded.');
             }
-        } else {
-            Log::warning('No file uploaded.');
+
+            // Create the lesson content
+            LessonContent::create([
+                'lesson_id' => $validatedData['lesson_id'],
+                'content_type' => $validatedData['content_type'],
+                'order' => $validatedData['order'] ?? 0,
+                'content_url' => $contentUrl,
+                'text_content' => $validatedData['text_content'] ?? null,
+            ]);
+
+            // Return success response
+            return redirect()->back()->with('success', 'Lesson content created successfully.');
+
+        } catch (\Exception $e) {
+            Log::error('Lesson content creation failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
         }
-
-        // Create the lesson content
-        LessonContent::create([
-            'lesson_id' => $validatedData['lesson_id'],
-            'content_type' => $validatedData['content_type'],
-            'order' => $validatedData['order'] ?? 0,
-            'content_url' => $contentUrl,
-            'text_content' => $validatedData['text_content'] ?? null,
-        ]);
-
-        // Return success response
-        return redirect()->back()->with('success', 'Lesson content created successfully.');
-
-    } catch (\Exception $e) {
-        Log::error('Lesson content creation failed: ' . $e->getMessage());
-        return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
     }
-}
+
     // Show the form to edit an existing lesson content
     public function edit($id)
     {
@@ -104,8 +101,7 @@ class LessonContentController extends Controller
         $lessons = Lesson::all(); // Fetch all lessons
         return view('admin.lesson_contents.edit', compact('lessonContent', 'lessons')); // Show the edit form
     }
-    
-    
+
     // Update an existing lesson content
     public function update(Request $request, $id)
     {
@@ -154,6 +150,12 @@ class LessonContentController extends Controller
     public function destroy($id)
     {
         $lessonContent = LessonContent::findOrFail($id);
+
+        // If there’s a file associated with the content, delete it
+        if ($lessonContent->content_url) {
+            \Storage::disk('public')->delete($lessonContent->content_url);
+        }
+
         $lessonContent->delete();
 
         return redirect()->route('admin.lesson_contents.index')->with('success', 'Lesson content deleted successfully.');
